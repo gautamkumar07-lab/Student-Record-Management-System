@@ -1,0 +1,96 @@
+/* ===== Student Record Management System - Styles ===== */
+:root{--blue:#00d4ff;--purple:#a855f7;--bg1:#0a0626;--bg2:#1b0b4a;--text:#e8ecff;--muted:#9aa4d6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;color:var(--text);min-height:100vh;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2),#0b2a5c,var(--bg1));background-size:400% 400%;
+  animation:bg 18s ease infinite}
+@keyframes bg{50%{background-position:100% 50%}}
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* Glassmorphism base */
+.glass{background:rgba(255,255,255,.07);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(0,212,255,.35);border-radius:18px;
+  box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 18px rgba(168,85,247,.25),inset 0 0 12px rgba(255,255,255,.05)}
+.app{position:relative;z-index:1;display:flex;gap:22px;padding:22px;min-height:100vh}
+.sidebar{width:200px;padding:20px 14px;display:flex;flex-direction:column;gap:12px;position:sticky;top:22px;height:fit-content}
+.logo{text-align:center;font-size:1.8rem;letter-spacing:4px;background:linear-gradient(90deg,var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:10px}
+.nav{padding:12px;border:0;border-radius:12px;color:var(--text);background:rgba(255,255,255,.06);cursor:pointer;font-size:1rem;
+  transition:.25s;transform:translateZ(0)}
+.nav:hover,.nav.active{background:linear-gradient(90deg,var(--blue),var(--purple));box-shadow:0 0 18px var(--blue);transform:translateX(5px)}
+main{flex:1;min-width:0;display:flex;flex-direction:column;gap:22px}
+.top{padding:22px}
+.top h2{font-size:1.6rem;text-shadow:0 0 14px var(--blue)}
+.top p{color:var(--muted);margin:4px 0 12px}
+.algo-badge{display:inline-block;padding:6px 14px;border-radius:20px;background:rgba(168,85,247,.25);border:1px solid var(--purple);box-shadow:0 0 12px var(--purple)}
+
+/* Pages & transitions */
+.page{display:none}
+.page.active{display:block;animation:pageIn .5s ease}
+@keyframes pageIn{from{opacity:0;transform:perspective(900px) rotateY(-12deg) translateX(30px)}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-bottom:22px}
+
+/* 3D cards */
+.card{padding:24px;display:flex;flex-direction:column;gap:8px}
+.card span{color:var(--muted)}
+.card strong{font-size:2.4rem;color:var(--blue);text-shadow:0 0 16px var(--blue)}
+.tilt{transform-style:preserve-3d;transition:transform .15s,box-shadow .3s}
+.tilt:hover{box-shadow:0 18px 50px rgba(0,0,0,.5),0 0 30px var(--blue)}
+.float{animation:float 4s ease-in-out infinite}
+.d1{animation-delay:.5s}.d2{animation-delay:1s}.d3{animation-delay:1.5s}
+@keyframes float{50%{margin-top:-8px}}
+.panel{padding:22px}
+.panel h3{margin-bottom:14px;color:var(--blue)}
+
+/* Forms & 3D buttons */
+form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+form .row{grid-column:1/-1}
+input,select{padding:12px 14px;border-radius:12px;border:1px solid rgba(0,212,255,.4);background:rgba(10,6,38,.6);color:var(--text);font-size:1rem;outline:0;transition:.25s}
+select option{background:#150a40}
+input:focus,select:focus{border-color:var(--purple);box-shadow:0 0 14px var(--purple)}
+.btn{padding:12px 22px;border:0;border-radius:12px;font-size:1rem;font-weight:600;color:#fff;cursor:pointer;
+  background:linear-gradient(135deg,var(--blue),var(--purple));box-shadow:0 6px 0 #4b1d8f,0 10px 20px rgba(0,0,0,.4);transition:.15s}
+.btn:hover{box-shadow:0 6px 0 #4b1d8f,0 0 24px var(--blue);transform:translateY(-2px)}
+.btn:active{transform:translateY(5px);box-shadow:0 1px 0 #4b1d8f}
+.btn.alt{background:rgba(255,255,255,.12);box-shadow:0 6px 0 #2a2a5a}
+.btn.sm{padding:6px 12px;font-size:.85rem;box-shadow:0 4px 0 #4b1d8f}
+.btn.del{background:linear-gradient(135deg,#ff2d75,#a855f7);box-shadow:0 4px 0 #7a1244}
+.info{margin-top:12px;color:var(--muted);min-height:1.2em}
+
+/* 3D data table */
+.table-wrap{overflow-x:auto;margin-top:14px;perspective:1000px}
+table{width:100%;border-collapse:separate;border-spacing:0 8px}
+th{text-align:left;padding:10px 14px;color:var(--blue)}
+td{padding:12px 14px;background:rgba(255,255,255,.06)}
+td:first-child{border-radius:12px 0 0 12px}td:last-child{border-radius:0 12px 12px 0}
+tbody tr{transition:.25s;animation:rowIn .4s ease backwards}
+tbody tr:hover{transform:translateZ(18px) rotateX(4deg) scale(1.01);filter:drop-shadow(0 0 10px var(--purple))}
+tbody tr.hit td{background:rgba(0,212,255,.25)}
+tbody tr.out{animation:rowOut .4s ease forwards}
+@keyframes rowIn{from{opacity:0;transform:translateY(20px) rotateX(-40deg)}}
+@keyframes rowOut{to{opacity:0;transform:translateX(80px) scale(.8)}}
+
+/* Toast */
+#toast{position:fixed;right:20px;bottom:20px;z-index:20;padding:14px 22px;border-radius:14px;background:rgba(10,6,38,.9);
+  border:1px solid var(--blue);box-shadow:0 0 20px var(--blue);transform:translateY(120px);transition:.4s}
+#toast.show{transform:none}
+
+/* Loader */
+#loader{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;gap:30px;align-items:center;justify-content:center;background:#0a0626;transition:opacity .6s}
+#loader.done{opacity:0;pointer-events:none}
+.cube{width:60px;height:60px;position:relative;transform-style:preserve-3d;animation:spin 2s linear infinite}
+.cube i{position:absolute;inset:0;border:2px solid var(--blue);background:rgba(168,85,247,.2);box-shadow:0 0 14px var(--blue)}
+.cube i:nth-child(1){transform:translateZ(30px)}.cube i:nth-child(2){transform:rotateY(180deg) translateZ(30px)}
+.cube i:nth-child(3){transform:rotateY(90deg) translateZ(30px)}.cube i:nth-child(4){transform:rotateY(-90deg) translateZ(30px)}
+.cube i:nth-child(5){transform:rotateX(90deg) translateZ(30px)}.cube i:nth-child(6){transform:rotateX(-90deg) translateZ(30px)}
+@keyframes spin{to{transform:rotateX(360deg) rotateY(360deg)}}
+
+/* Responsive: tablet and mobile */
+@media(max-width:800px){
+  .app{flex-direction:column;padding:12px}
+  .sidebar{width:100%;flex-direction:row;flex-wrap:wrap;position:static;justify-content:center}
+  .logo{width:100%;margin:0}
+  .nav{flex:1;min-width:80px;padding:10px 6px;font-size:.9rem}
+  .nav:hover,.nav.active{transform:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

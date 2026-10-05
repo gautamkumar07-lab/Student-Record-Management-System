@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Record Management System using Arrays, Searching, and Sorting Algorithms</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- Animated particle background -->
+<canvas id="particles"></canvas>
+<!-- Loading screen -->
+<div id="loader"><div class="cube"><i></i><i></i><i></i><i></i><i></i><i></i></div><p>Loading records…</p></div>
+
+<div class="app">
+  <!-- Sidebar navigation -->
+  <nav class="sidebar glass">
+    <h1 class="logo">SRMS</h1>
+    <button class="nav active" data-page="dashboard">Dashboard</button>
+    <button class="nav" data-page="manage">Manage</button>
+    <button class="nav" data-page="search">Search</button>
+    <button class="nav" data-page="records">Records</button>
+  </nav>
+
+  <main>
+    <header class="top glass tilt">
+      <h2>Student Record Management System</h2>
+      <p>using Arrays, Searching, and Sorting Algorithms</p>
+      <span class="algo-badge">Algorithm in use: <b id="algoNow">None yet</b></span>
+    </header>
+
+    <!-- Dashboard + statistics -->
+    <section class="page active" id="dashboard">
+      <div class="grid">
+        <div class="card glass tilt float"><span>Total students</span><strong id="sTotal">0</strong></div>
+        <div class="card glass tilt float d1"><span>Highest marks</span><strong id="sMax">0</strong></div>
+        <div class="card glass tilt float d2"><span>Lowest marks</span><strong id="sMin">0</strong></div>
+        <div class="card glass tilt float d3"><span>Average marks</span><strong id="sAvg">0</strong></div>
+      </div>
+      <div class="glass panel tilt">
+        <h3>Algorithm complexity</h3>
+        <div class="table-wrap"><table id="complexity"></table></div>
+      </div>
+    </section>
+
+    <!-- Student management -->
+    <section class="page" id="manage">
+      <div class="glass panel tilt">
+        <h3 id="formTitle">Add student</h3>
+        <form id="studentForm" autocomplete="off">
+          <input id="fId" placeholder="Student ID" required>
+          <input id="fName" placeholder="Name" required>
+          <input id="fCourse" placeholder="Course" required>
+          <input id="fSem" type="number" min="1" max="12" placeholder="Semester" required>
+          <input id="fMarks" type="number" min="0" max="100" step="0.01" placeholder="Marks (0-100)" required>
+          <div class="row">
+            <button class="btn" type="submit" id="saveBtn">Add student</button>
+            <button class="btn alt" type="button" id="cancelBtn" hidden>Cancel edit</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Search panel -->
+    <section class="page" id="search">
+      <div class="glass panel tilt">
+        <h3>Search students</h3>
+        <div class="row">
+          <input id="qText" placeholder="Enter ID or name">
+          <select id="qField"><option value="id">By ID</option><option value="name">By Name</option></select>
+          <select id="qAlgo"><option value="linear">Linear Search</option><option value="binary">Binary Search</option></select>
+          <button class="btn" id="searchBtn">Search</button>
+          <button class="btn alt" id="clearBtn">Clear</button>
+        </div>
+        <p id="searchInfo" class="info"></p>
+      </div>
+    </section>
+
+    <!-- Data table -->
+    <section class="page" id="records">
+      <div class="glass panel">
+        <h3>All students</h3>
+        <div class="row">
+          <select id="sField"><option value="id">Student ID</option><option value="name">Name</option><option value="marks">Marks</option></select>
+          <select id="sAlgo"><option value="quick">Quick Sort</option><option value="bubble">Bubble Sort</option></select>
+          <select id="sOrder"><option value="asc">Ascending</option><option value="desc">Descending</option></select>
+          <button class="btn" id="sortBtn">Sort</button>
+        </div>
+        <p id="sortInfo" class="info"></p>
+        <div class="table-wrap">
+          <table id="dataTable">
+            <thead><tr><th>ID</th><th>Name</th><th>Course</th><th>Sem</th><th>Marks</th><th>Actions</th></tr></thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<div id="toast"></div>
+<script src="js/script.js"></script>
+</body>
+</html>
